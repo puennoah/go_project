@@ -68,9 +68,7 @@ func main() {var move, machineMove int
 			fmt.Println("-> you win")
 		}
 	}
-	fmt.Println("You win", wins, "times")
-	fmt.Println("You lose,", machineWins, "times")
-	fmt.Println("You draw", draws, "times")
+	
 
 
 }
