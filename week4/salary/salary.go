@@ -1,3 +1,4 @@
+//Program for finding lowest highest and average salary
 package main 
 import (
 	"bufio"
@@ -52,7 +53,7 @@ func readFile(fileName string) (map[string]uint64, error) {
 	return salary, nil
 }
 
-func min(salary map[string]uint64) (string, uint64) {
+func min(salary map[string]uint64) (string, uint64) {//For finding person the earn lowest salry
 	if len(salary) == 0 {
 		return "Empty map", 0
 	}
@@ -67,7 +68,7 @@ func min(salary map[string]uint64) (string, uint64) {
 	return minName, min
 }
 
-func max(salary map[string]uint64) (string, uint64) {
+func max(salary map[string]uint64) (string, uint64) {//For finding person the earn highest salry
 	if len(salary) == 0 {
 		return "Empty map", 0
 	}
@@ -82,7 +83,7 @@ func max(salary map[string]uint64) (string, uint64) {
 	return maxName, max
 }
 
-func average(salary map[string]uint64) uint64 {
+func average(salary map[string]uint64) uint64 { //For finding average
 	if len(salary) == 0 {
 		return 0
 	}
