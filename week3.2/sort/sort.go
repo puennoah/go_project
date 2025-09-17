@@ -28,9 +28,9 @@ func main() {
 	for i := range howMany {
 		data[i] = rand.Intn(howMany) + 1
 	}
-	fmt.Println(data[0:10])
+	fmt.Println(data[0:15])
 	sort.Sort(data)
-	fmt.Println(data[0:10])
+	fmt.Println(data[0:15])
 }
 
 
