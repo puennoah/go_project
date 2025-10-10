@@ -13,7 +13,7 @@ func main() {
 	}()
 
 	go func() {
-		time.Sleep(1 * time.Second)
+		time.Sleep(2 * time.Second)
 		ch <- "Hello from goroutine 2"
 	}()
 	msg1 := <- ch
