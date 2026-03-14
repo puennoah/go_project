@@ -6,25 +6,34 @@ import (
 
 type person struct {
 	firstName string
-	lastName string
-	contact contactInfo
+	lastName  string
+	contactInfo
 }
 
 type contactInfo struct {
-	email string
+	email   string
 	zipCode int
 }
 
-
 func main() {
-	jim := person {
-		firstName : "Jim",
-		lastName : "Party",
-		contact : contactInfo {
-			email : "jim@gmail.com",
-			zipCode : 94000,
+	jim := person{
+		firstName: "Jim",
+		lastName:  "Party",
+		contactInfo: contactInfo{
+			email:   "jim@gmail.com",
+			zipCode: 94000,
 		},
 	}
 
-	fmt.Printf("%+v", jim)
+	jim.updateName("Jimmy")
+	jim.print()
 }
+
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
+}
+
+func (p person) print() {
+	fmt.Printf("%+v\n", p)
+}
+
