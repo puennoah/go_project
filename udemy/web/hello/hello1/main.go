@@ -2,23 +2,23 @@ package main
 
 import (
 	"log"
-	"time"
+
+	"github.com/noahpuen/myniceprogram/helpers"
 )
 
-type User struct {
-	FirstName   string
-	LastName    string
-	PhoneNumber string
-	Age         int
-	BirthDate   time.Time
+const numPool = 1000
+
+func CalculateValue(intChan chan int) {
+	randomNumber := helpers.RandomNumber(numPool)
+	intChan <- randomNumber
 }
 
 func main() {
-	user := User{
-		FirstName:   "Trevor",
-		LastName:    "Sawler",
-		PhoneNumber: "1 555-555-1212",
-	}
+	intChan := make(chan int)
+	defer close(intChan)
 
-	log.Println(user.FirstName, user.LastName, "Birthdate:", user.BirthDate)
+	go CalculateValue(intChan)
+
+	num := <-intChan
+	log.Println(num)
 }
