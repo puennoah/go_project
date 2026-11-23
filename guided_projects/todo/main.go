@@ -53,16 +53,7 @@ func main() {
 
 		switch number {
 		case 1: // View todos
-			if len(todos) < 1 {
-				fmt.Println("You got no todo!")
-				break
-			}
-			fmt.Println("You have", len(todos), "todos")
-			fmt.Println("Todos:")
-
-			for i, todo := range todos {
-				fmt.Println(i+1, todo)
-			}
+			viewTodos(todos)
 
 		case 2: // Add todo
 			for {
@@ -82,15 +73,10 @@ func main() {
 					todos = append(todos, input)
 				}
 			}
-			fmt.Println("You have", len(todos), "todos")
-			fmt.Println("Todos:")
-			for i, todo := range todos {
-				fmt.Println(i+1, todo)
-			}
+			viewTodos(todos)
 
 		case 3: //Delete todo
-			if len(todos) < 1 {
-				fmt.Println("You got no todo!")
+			if !viewTodos(todos) {
 				break
 			}
 			for {
@@ -126,14 +112,9 @@ func main() {
 			if err := scanner.Err(); err != nil {
 				fmt.Println("Error reading input:", err)
 			}
-			fmt.Println("You have", len(todos), "todos")
-			fmt.Println("Todos:")
-			for i, todo := range todos {
-				fmt.Println(i+1, todo)
-			}
+			viewTodos(todos)
 		case 4: // Edit todo
-			if len(todos) < 1 {
-				fmt.Println("You got no todo!")
+			if !viewTodos(todos) {
 				break
 			}
 			for {
@@ -179,11 +160,8 @@ func main() {
 				fmt.Println("Error reading input:", err)
 			}
 
-			fmt.Println("You have", len(todos), "todos")
-			fmt.Println("Todos:")
-			for i, todo := range todos {
-				fmt.Println(i+1, todo)
-			}
+			viewTodos(todos)
+
 		case 5:
 			fmt.Println("Exit")
 		}
@@ -193,4 +171,17 @@ func main() {
 
 	}
 
+}
+
+func viewTodos(todos []string) bool {
+	if len(todos) < 1 {
+		fmt.Println("You got no todo!")
+		return false
+	}
+	fmt.Println("You have", len(todos), "todos")
+	fmt.Println("Todos:")
+	for i, todo := range todos {
+		fmt.Println(i+1, todo)
+	}
+	return true
 }
