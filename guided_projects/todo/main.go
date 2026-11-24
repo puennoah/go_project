@@ -56,23 +56,7 @@ func main() {
 			viewTodos(todos)
 
 		case 2: // Add todo
-			for {
-				fmt.Println("Enter a todo: ")
-
-				if !scanner.Scan() {
-					break
-				}
-
-				input = scanner.Text()
-
-				if input == "" {
-					continue
-				} else if input == "done" {
-					break
-				} else {
-					todos = append(todos, input)
-				}
-			}
+			todos = addTodo(todos, scanner)
 			viewTodos(todos)
 
 		case 3: //Delete todo
@@ -184,4 +168,26 @@ func viewTodos(todos []string) bool {
 		fmt.Println(i+1, todo)
 	}
 	return true
+}
+
+func addTodo(todos []string, scanner *bufio.Scanner) []string {
+	for {
+		fmt.Println("Enter a todo: ")
+
+		if !scanner.Scan() {
+			break
+		}
+
+		input := scanner.Text()
+
+		if input == "" {
+			continue
+		} else if input == "done" {
+			break
+		} else {
+			todos = append(todos, input)
+		}
+	}
+	return todos
+
 }
